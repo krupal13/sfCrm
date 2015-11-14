@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collection;
+
 /**
  * UserDetailsClient
  * @ORM\Entity
@@ -20,7 +20,7 @@ class UserDetailsClient extends UserDetails
     private $pesel;
 
      /**
-     * @var ArrayCollection
+     * @var \Doctrine\Common\Collection\ArrayCollection
      * @ORM\OneToMany(targetEntity="Agreement", mappedBy="client" )
      */
     private $agreements;
