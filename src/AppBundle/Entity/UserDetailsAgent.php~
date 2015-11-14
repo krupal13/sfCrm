@@ -18,6 +18,12 @@ class UserDetailsAgent extends UserDetails {
      */
     private $commission;
     
+    /**
+     * @var \Doctrine\Common\Collection\ArrayCollection
+     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="agent")
+     * 
+     */
+    private $agreements;
 
     /**
      * Set commission
@@ -42,4 +48,15 @@ class UserDetailsAgent extends UserDetails {
     {
         return $this->commission;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

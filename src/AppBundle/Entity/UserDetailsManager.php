@@ -83,4 +83,5 @@ class UserDetailsManager extends UserDetails
     {
         return $this->id;
     }
+
 }

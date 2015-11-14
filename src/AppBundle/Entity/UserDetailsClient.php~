@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collection;
 /**
  * UserDetailsClient
  * @ORM\Entity
@@ -19,8 +19,12 @@ class UserDetailsClient extends UserDetails
      */
     private $pesel;
 
+     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="client" )
+     */
+    private $agreements;
 
-    
     /**
      * Set pesel
      *
@@ -44,4 +48,15 @@ class UserDetailsClient extends UserDetails
     {
         return $this->pesel;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

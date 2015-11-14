@@ -1,0 +1,43 @@
+<?php namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({
+ *  "life"    = "AgreementLife",
+ *  "vehicle" = "AgreementVehicle",
+ *  "estate"  = "AgreementEstate"
+ * })
+ * 
+ * @ORM\Entity()
+ * @ORM\Table(name="agreement")
+ */
+abstract class Agreement
+{
+    use Traits\TimestampableTrait;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="number", type="string", length=30)
+     */
+    private $number;
+    
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="value", type="decimal", scale=2, precision=10)
+     */
+    private $value;
+}

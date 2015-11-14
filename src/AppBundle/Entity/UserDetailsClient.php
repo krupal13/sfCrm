@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collection;
 /**
  * UserDetailsClient
  * @ORM\Entity
@@ -19,8 +19,12 @@ class UserDetailsClient extends UserDetails
      */
     private $pesel;
 
+     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="client" )
+     */
+    private $agreements;
 
-    
     /**
      * Set pesel
      *
@@ -53,5 +57,47 @@ class UserDetailsClient extends UserDetails
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agreements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add agreement
+     *
+     * @param \AppBundle\Entity\Agreement $agreement
+     *
+     * @return UserDetailsClient
+     */
+    public function addAgreement(\AppBundle\Entity\Agreement $agreement)
+    {
+        $this->agreements[] = $agreement;
+
+        return $this;
+    }
+
+    /**
+     * Remove agreement
+     *
+     * @param \AppBundle\Entity\Agreement $agreement
+     */
+    public function removeAgreement(\AppBundle\Entity\Agreement $agreement)
+    {
+        $this->agreements->removeElement($agreement);
+    }
+
+    /**
+     * Get agreements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAgreements()
+    {
+        return $this->agreements;
     }
 }

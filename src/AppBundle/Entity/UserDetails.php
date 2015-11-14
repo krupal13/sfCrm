@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 abstract class UserDetails 
 {
-    use Traits\TimestampableTrait;
+    //use Traits\TimestampableTrait;
     
      /**
      * @var integer
@@ -103,4 +103,6 @@ abstract class UserDetails
     {
         return $this->lastName;
     }
+
+    
 }
