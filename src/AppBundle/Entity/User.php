@@ -21,21 +21,21 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-      public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
-    
+
     /**
      * @var UserDetails
      * 
-     * @ORM\OneToOne(targetEntity="UserDetails")
+     * @ORM\OneToOne(targetEntity="UserDetails", cascade={"persist"})
      */
     protected $details;
 
-
+    public function __construct()
+    {
+        parent::__construct();
+        
+        // your own logic
+    }
+    
     /**
      * Get id
      *

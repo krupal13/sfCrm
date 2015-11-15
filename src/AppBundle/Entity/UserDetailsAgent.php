@@ -1,34 +1,40 @@
-<?php
+<?php 
 
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UserDetailsAgent
- * @ORM\Entity
+ * Class UserDetailsAgent
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserDetailsAgentRepository")
  */
-class UserDetailsAgent extends UserDetails {
-    
-    
+class UserDetailsAgent extends UserDetails
+{
     /**
-     * @var decimal
+     * @var integer
      *
-     * @ORM\Column(name="commission", type="decimal", scale=2, precision=10)
+     * @ORM\Column(name="commission", type="integer")
      */
     private $commission;
     
     /**
-     * @var \Doctrine\Common\Collection\ArrayCollection
-     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="agent")
+     * @var \Doctrine\Common\Collections\ArrayCollection
      * 
+     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="agent")
      */
     private $agreements;
-
+    
+    /**
+     * @var UserDetailsManager
+     * 
+     * @ORM\ManyToOne(targetEntity="UserDetailsManager", inversedBy="agents")
+     */
+    private $manager;
+    
     /**
      * Set commission
      *
-     * @param string $commission
+     * @param integer $commission
      *
      * @return UserDetailsAgent
      */
@@ -42,23 +48,12 @@ class UserDetailsAgent extends UserDetails {
     /**
      * Get commission
      *
-     * @return string
+     * @return integer
      */
     public function getCommission()
     {
         return $this->commission;
     }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
     /**
      * Constructor
      */
@@ -99,5 +94,29 @@ class UserDetailsAgent extends UserDetails {
     public function getAgreements()
     {
         return $this->agreements;
+    }
+
+    /**
+     * Set manager
+     *
+     * @param \AppBundle\Entity\UserDetailsManager $manager
+     *
+     * @return UserDetailsAgent
+     */
+    public function setManager(\AppBundle\Entity\UserDetailsManager $manager = null)
+    {
+        $this->manager = $manager;
+
+        return $this;
+    }
+
+    /**
+     * Get manager
+     *
+     * @return \AppBundle\Entity\UserDetailsManager
+     */
+    public function getManager()
+    {
+        return $this->manager;
     }
 }

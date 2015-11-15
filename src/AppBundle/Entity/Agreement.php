@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 abstract class Agreement
 {
-    //use Traits\TimestampableTrait;
+    use Traits\TimestampableTrait;
     
     /**
      * @var integer
@@ -42,18 +42,14 @@ abstract class Agreement
     private $value;
     
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="UserDetailsAgent", inversedBy="agreement" )
+     * @ORM\ManyToOne(targetEntity="UserDetailsAgent", inversedBy="agreements")
      */
     private $agent;
     
-     /**
-     *
-     * @ORM\ManyToOne(targetEntity="UserDetailsClient", inversedBy="agreement" )
+    /**
+     * @ORM\ManyToOne(targetEntity="UserDetailsClient", inversedBy="agreements")
      */
     private $client;
-    
-    
 
     /**
      * Get id
@@ -114,30 +110,50 @@ abstract class Agreement
     }
 
     /**
-     * Set createdAt
+     * Set agent
      *
-     * @param \DateTime $createdAt
+     * @param \AppBundle\Entity\UserDetailsAgent $agent
      *
      * @return Agreement
      */
-    public function setCreatedAt($createdAt)
+    public function setAgent(\AppBundle\Entity\UserDetailsAgent $agent = null)
     {
-        $this->createdAt = $createdAt;
+        $this->agent = $agent;
 
         return $this;
     }
 
     /**
-     * Set updatedAt
+     * Get agent
      *
-     * @param \DateTime $updatedAt
+     * @return \AppBundle\Entity\UserDetailsAgent
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\UserDetailsClient $client
      *
      * @return Agreement
      */
-    public function setUpdatedAt($updatedAt)
+    public function setClient(\AppBundle\Entity\UserDetailsClient $client = null)
     {
-        $this->updatedAt = $updatedAt;
+        $this->client = $client;
 
         return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\UserDetailsClient
+     */
+    public function getClient()
+    {
+        return $this->client;
     }
 }
