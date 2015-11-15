@@ -10,18 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UserDetailsClient extends UserDetails
 {
-   
-
     /**
      * @var string
      *
      * @ORM\Column(name="pesel", type="string", length=11)
      */
     private $pesel;
-
-     /**
-     * @var \Doctrine\Common\Collection\ArrayCollection
-     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="client" )
+    
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="Agreement", mappedBy="client")
      */
     private $agreements;
 
@@ -48,17 +47,6 @@ class UserDetailsClient extends UserDetails
     {
         return $this->pesel;
     }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
     /**
      * Constructor
      */
