@@ -10,8 +10,6 @@ namespace AppBundle\Controller;
 
 /**
  * Description of AgreementLifeControler
- *
- * @author mirka
  */
 class AgreementLifeControler {
     //put your code here
