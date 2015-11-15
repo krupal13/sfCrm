@@ -50,6 +50,13 @@ abstract class Agreement
      * @ORM\ManyToOne(targetEntity="UserDetailsClient", inversedBy="agreements")
      */
     private $client;
+    
+    
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="agreement")
+     */
+    private $attachment;
 
     /**
      * Get id
@@ -155,5 +162,46 @@ abstract class Agreement
     public function getClient()
     {
         return $this->client;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->attachment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add attachment
+     *
+     * @param \AppBundle\Entity\Attachment $attachment
+     *
+     * @return Agreement
+     */
+    public function addAttachment(\AppBundle\Entity\Attachment $attachment)
+    {
+        $this->attachment[] = $attachment;
+
+        return $this;
+    }
+
+    /**
+     * Remove attachment
+     *
+     * @param \AppBundle\Entity\Attachment $attachment
+     */
+    public function removeAttachment(\AppBundle\Entity\Attachment $attachment)
+    {
+        $this->attachment->removeElement($attachment);
+    }
+
+    /**
+     * Get attachment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAttachment()
+    {
+        return $this->attachment;
     }
 }
