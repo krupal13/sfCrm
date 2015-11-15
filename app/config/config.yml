@@ -93,3 +93,8 @@ fos_user:
 
 vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
+
+knp_paginator:
+    page_range: 5
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig

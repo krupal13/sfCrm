@@ -16,14 +16,18 @@ class AgentController extends Controller {
      * @Route("/agent/list", name="agent_list")
      * @Security("has_role('ROLE_MANAGER')")
      */
-    public function listAction(Request $request)
-{
+    public function listAction(Request $request) {
         $agents = $this->getDoctrine()
                 ->getRepository('AppBundle:UserDetailsAgent')
-                ->getAgents($this->getUser());
+                ->getAgents($this->getUser(), true);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $agents, $request->query->getInt('page', 1)/* page number */, 10/* limit per page */
+        );
 
         return $this->render('agent/list.html.twig', [
-                    'agents' => $agents
+                    'agents' => $pagination
         ]);
     }
 
