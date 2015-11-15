@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 
 namespace AppBundle\Entity;
 
@@ -17,21 +16,20 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="user_details")
  */
-abstract class UserDetails 
+abstract class UserDetails
 {
-    //use Traits\TimestampableTrait;
+    use Traits\TimestampableTrait;
     
-     /**
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
     
-    
-  /**
+    /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=100)
@@ -44,7 +42,6 @@ abstract class UserDetails
      * @ORM\Column(name="last_name", type="string", length=100)
      */
     private $lastName;
-    
 
     /**
      * Get id
@@ -52,10 +49,10 @@ abstract class UserDetails
      * @return integer
      */
     public function getId()
-    {
+    {        
         return $this->id;
     }
-
+    
     /**
      * Set firstName
      *
@@ -103,6 +100,15 @@ abstract class UserDetails
     {
         return $this->lastName;
     }
-
     
+    /**
+     * Full Name
+     * 
+     * @return string
+     */
+    public function getFullName()
+    {
+        return sprintf('%s %s', $this->getFirstName(), $this->getLastName());
+    }
+
 }

@@ -61,6 +61,14 @@ class Attachment
      * @ORM\Column(name="file_uploaded_at", type="datetime")
      */
     private $fileUploadedAt;
+    
+    
+    /**
+     *
+     * @var Agreement
+     * @ORM\ManyToOne(targetEntity="Agreement", inversedBy="attachments")
+     */
+    private $agreement;
 
     /**
      * Get id

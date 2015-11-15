@@ -1,12 +1,11 @@
-# app/config/security.yml
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_AGENT:       ROLE_USER
-        ROLE_MANAGER:     ROLE_AGENT
-        ROLE_ADMIN:       ROLE_MANAGER
+        ROLE_AGENT:       [ ROLE_USER ]
+        ROLE_MANAGER:     [ ROLE_AGENT ]
+        ROLE_ADMIN:       [ ROLE_MANAGER ]
 
     providers:
         fos_userbundle:
@@ -25,6 +24,6 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/(css|js), role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/(_wdt|_profiler), role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(css|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(_wdt|_profiler), roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: ROLE_USER }

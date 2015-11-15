@@ -51,12 +51,12 @@ abstract class Agreement
      */
     private $client;
     
-    
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="agreement")
+     * 
+     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="agreement", cascade={"persist"})
      */
-    private $attachment;
+    private $attachments;
 
     /**
      * Get id
@@ -168,7 +168,7 @@ abstract class Agreement
      */
     public function __construct()
     {
-        $this->attachment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->attachments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -180,7 +180,8 @@ abstract class Agreement
      */
     public function addAttachment(\AppBundle\Entity\Attachment $attachment)
     {
-        $this->attachment[] = $attachment;
+        $this->attachments[] = $attachment;
+        $attachment->setAgreement($this);
 
         return $this;
     }
@@ -192,16 +193,16 @@ abstract class Agreement
      */
     public function removeAttachment(\AppBundle\Entity\Attachment $attachment)
     {
-        $this->attachment->removeElement($attachment);
+        $this->attachments->removeElement($attachment);
     }
 
     /**
-     * Get attachment
+     * Get attachments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAttachment()
+    public function getAttachments()
     {
-        return $this->attachment;
+        return $this->attachments;
     }
 }
