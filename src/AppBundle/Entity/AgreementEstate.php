@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 
 namespace AppBundle\Entity;
@@ -15,6 +16,22 @@ class AgreementEstate extends Agreement
      * @var string
      *
      * @ORM\Column(name="estate", type="string", length=100)
+=======
+<?php
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Description of AgreementEstate
+ * @ORM\Entity
+ */
+class AgreementEstate extends Agreement {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estate", type="string", length=255)
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
      */
     private $estate;
 
@@ -41,6 +58,7 @@ class AgreementEstate extends Agreement
     {
         return $this->estate;
     }
+<<<<<<< HEAD
 
     /**
      * Set createdAt
@@ -69,4 +87,6 @@ class AgreementEstate extends Agreement
 
         return $this;
     }
+=======
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
 }

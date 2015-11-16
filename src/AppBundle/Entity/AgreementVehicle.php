@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 <?php 
+=======
+<?php
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
 
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+<<<<<<< HEAD
  * Class AgreementVehile
  *
  * @ORM\Entity
@@ -18,6 +23,22 @@ class AgreementVehicle extends Agreement
      */
     private $vehicle;
 
+=======
+ * Description of AgreementVehicle
+ * 
+ * @ORM\Entity
+ */
+class AgreementVehicle extends Agreement {
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vehicle", type="string", length=255)
+     */
+    private $vehicle;
+
+
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
     /**
      * Set vehicle
      *
@@ -41,6 +62,7 @@ class AgreementVehicle extends Agreement
     {
         return $this->vehicle;
     }
+<<<<<<< HEAD
 
     /**
      * Set createdAt
@@ -69,4 +91,6 @@ class AgreementVehicle extends Agreement
 
         return $this;
     }
+=======
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
 }

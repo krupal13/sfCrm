@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "name": "radek/sf-crm",
+=======
+    "name": "mirka/sf-crm",
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -20,12 +24,21 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "stof/doctrine-extensions-bundle": "^1.2",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+<<<<<<< HEAD
         "fzaninotto/faker": "^1.5",
         "vich/uploader-bundle": "^0.14.0",
         "oneup/flysystem-bundle": "^1.1",
         "knplabs/knp-paginator-bundle": "^2.5",
         "knplabs/knp-menu-bundle": "~2",
         "liip/imagine-bundle": "^1.3"
+=======
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "knplabs/knp-menu-bundle": "~2",
+        "liip/imagine-bundle": "^1.3",
+        "vich/uploader-bundle": "^0.14.0",
+        "oneup/flysystem-bundle": "^1.1",
+        "fzaninotto/faker": "^1.5"
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

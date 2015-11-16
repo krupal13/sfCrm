@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<<<<<<< HEAD
     
     Ilość rekordów: {{ agents.getTotalItemCount }}
     
@@ -27,3 +28,39 @@
     </div>
     
 {% endblock %}
+=======
+
+    Ilość rekordów: {{ agents.getTotalItemCount }}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Lista użytkowników</h3>
+
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>Agent</th>
+                            <th>Prowizja</th>
+                        </tr>
+                        {% for agent in agents %}
+                            <tr>
+                                <td>{{ agent.id }}</td>
+                                <td>{{ agent.firstName }} {{ agent.lastName }}</td>
+                                <td>{{ agent.commission }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+
+    <div class="navigation">
+        {{ knp_pagination_render(agents) }}
+    </div>
+{% endblock %}
+>>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca

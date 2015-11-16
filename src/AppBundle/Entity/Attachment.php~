@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Attachment
 {
-    use Traits\TimestampableTrait;
+   // use Traits\TimestampableTrait;
     
     /**
      * @var integer
@@ -62,18 +62,11 @@ class Attachment
      */
     private $fileUploadedAt;
     
-<<<<<<< HEAD
-    /**
-     * @var Agreement
-     * 
-     * @ORM\ManyToOne(targetEntity="Agreement", inversedBy="attachments") 
-=======
     
     /**
      *
      * @var Agreement
      * @ORM\ManyToOne(targetEntity="Agreement", inversedBy="attachments")
->>>>>>> 5f9797c42581054637d073b6f24e8a1c70bb5cca
      */
     private $agreement;
 
@@ -197,29 +190,5 @@ class Attachment
     public function getFileUploadedAt()
     {
         return $this->fileUploadedAt;
-    }
-
-    /**
-     * Set agreement
-     *
-     * @param \AppBundle\Entity\Agreement $agreement
-     *
-     * @return Attachment
-     */
-    public function setAgreement(\AppBundle\Entity\Agreement $agreement = null)
-    {
-        $this->agreement = $agreement;
-
-        return $this;
-    }
-
-    /**
-     * Get agreement
-     *
-     * @return \AppBundle\Entity\Agreement
-     */
-    public function getAgreement()
-    {
-        return $this->agreement;
     }
 }
